@@ -1,0 +1,53 @@
+From eb10b17271bad24609e927c65d25a54caf36d658 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Thu, 19 Sep 2024 12:22:44 +0800
+Subject: [PATCH] install
+
+---
+ VIC.desktop | 11 +++++++++++
+ VIC.pro     | 10 ++++++----
+ 2 files changed, 17 insertions(+), 4 deletions(-)
+ create mode 100644 VIC.desktop
+
+diff --git a/VIC.desktop b/VIC.desktop
+new file mode 100644
+index 0000000..ff23d88
+--- /dev/null
++++ b/VIC.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=VIC
++Name=VIC
++Name[zh_CN]=VIC
++Icon=coyote_crop
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=VIC
++Version=1.0
+\ No newline at end of file
+diff --git a/VIC.pro b/VIC.pro
+index 22a9348..2150f30 100644
+--- a/VIC.pro
++++ b/VIC.pro
+@@ -47,10 +47,12 @@ FORMS += \
+         mainwindow.ui \
+     aboutvic.ui
+ 
+-# Default rules for deployment.
+-qnx: target.path = /tmp/$${TARGET}/bin
+-else: unix:!android: target.path = /opt/$${TARGET}/bin
+-!isEmpty(target.path): INSTALLS += target
++target.path = $$PREFIX/bin
++desktop.files = VIC.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons/hicolor/apps/
++icons.files = images/coyote_crop.png
+ 
++INSTALLS += target desktop icons
+ RESOURCES += \
+     images.qrc
+-- 
+2.43.4
+
